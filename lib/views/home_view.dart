@@ -88,29 +88,31 @@ class HomeView extends StatelessWidget {
         divider,
         _tile('Card Brand', model.brand),
         divider,
-        _tile('Card Type', model.country),
+        _tile('Card Type', model.type),
         divider,
-        _tile('Card Level', model.country),
+        _tile('Card Level', model.level),
         divider,
-        _tile('Issuing Bank', model.country),
+        _tile('Issuing Bank', model.bank),
         divider,
-        _tile('Ussuers Website', model.country),
+        _tile('Ussuers Website', model.website),
         divider,
-        _tile('Issuers Contact', model.country),
+        _tile('Issuers Contact', model.number),
         divider,
-        _tile('Bin', model.country),
+        _tile('Bin', model.bin),
         divider,
-        _tile('Valid', model.country),
+        _tile('Valid', model.valid.toString().toUpperCase()),
         divider,
       ],
     );
   }
   _tile(String title, String value) => Container(
-    height: 29,
+    constraints: BoxConstraints(
+      minHeight: 29
+    ),
     alignment: Alignment.center,
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.center,
-      children: [ SizedBox(width: 15.0,), Text(title), Expanded(child: Container(),),Text(value), SizedBox(width: 15.0,)],
+      children: [ SizedBox(width: 15.0,), SelectableText(title, style: LISTCREDITTEXT.copyWith(color: Colors.grey)), Expanded(child: Container(),),Container(width: 160, alignment: Alignment.centerRight, child: SelectableText(value, style: LISTCREDITTEXT, textAlign: TextAlign.right,)), SizedBox(width: 15.0,)],
     ),
   );
 
