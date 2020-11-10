@@ -8,3 +8,9 @@ const CREDITCARDTEXT = TextStyle(
   letterSpacing: 0.6,
   fontStyle: FontStyle.italic
 );
+
+const LISTCREDITTEXT = TextStyle(
+  color: Colors.lightBlue,
+  fontWeight: FontWeight.w600,
+  fontSize: 15
+);
