@@ -35,6 +35,7 @@ class SearchViewModel extends ChangeNotifier {
     isLoading = false;
     notifyListeners();
 
+    binController.clear();
     if(response == null){
       scaffoldKey.currentState.showSnackBar(
         SnackBar(
