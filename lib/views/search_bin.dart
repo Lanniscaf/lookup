@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lookup/get_it.dart';
 import 'package:lookup/styles/constants.dart';
 import 'package:lookup/view-model/search_viewmodel.dart';
 import 'package:stacked/stacked.dart';
