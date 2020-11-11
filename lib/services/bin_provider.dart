@@ -8,6 +8,7 @@ class BinProvider {
     try {
       final url = 'https://bincheck.io/bin/$bin';
       final res = await http.post(url, body: {});
+      // TODO: Add internet exception
       final decoded = res.body;
 
       var soup = Beautifulsoup(decoded);
