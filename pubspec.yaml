@@ -29,9 +29,10 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
   stacked: ^1.7.6
-  font_awesome: ^5.10.1
   responsive_builder: ^0.3.0
+  beautifulsoup: ^0.0.1
   http: any
+  get_it: any
 
 
 dev_dependencies:
