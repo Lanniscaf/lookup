@@ -59,7 +59,7 @@ class HomeView extends StatelessWidget {
             Positioned(
               left: sizing.localWidgetSize.width * 0.06,
               bottom: sizing.localWidgetSize.height * 0.1,
-              child: Text(model.bank, style: CREDITCARDTEXT.copyWith(fontSize: 17.0),)
+              child: Container(width: sizing.localWidgetSize.width * 0.7, child: FittedBox(fit: BoxFit.scaleDown, alignment: Alignment.centerLeft, child: Text(model.bank, style: CREDITCARDTEXT.copyWith(fontSize: 17.0),)))
             ),
 
             Positioned(
