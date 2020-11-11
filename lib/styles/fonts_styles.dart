@@ -6,11 +6,12 @@ const CREDITCARDTEXT = TextStyle(
   color: Colors.white,
   fontWeight: FontWeight.w600,
   letterSpacing: 0.6,
-  fontStyle: FontStyle.italic
+  fontFamily: 'Piazolla'
 );
 
 const LISTCREDITTEXT = TextStyle(
   color: Colors.lightBlue,
+  fontFamily: 'Roboto',
   fontWeight: FontWeight.w600,
   fontSize: 15
 );
