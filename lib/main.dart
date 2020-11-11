@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lookup/views/home_view.dart';
+import 'package:lookup/get_it.dart';
+import 'package:lookup/views/search_bin.dart';
+
 void main() { 
+  getInit();
   runApp(MyApp());
 }
 class MyApp extends StatelessWidget {
@@ -9,8 +12,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Lookup',
       debugShowCheckedModeBanner: false,
-      home: HomeView(),
+      home: SearchBin(),
       theme: ThemeData.light(),
+      navigatorKey: getIt<NAVIGATOR>().navigateKey,
     );
   }
 }
