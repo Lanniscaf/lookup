@@ -1,5 +1,5 @@
 # lookup
 
-A powerfull bin validator
+A bin searcher
 
 
