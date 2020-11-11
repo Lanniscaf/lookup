@@ -8,8 +8,8 @@ import 'package:stacked/stacked.dart';
 
 class HomeView extends StatelessWidget {
 
-  final CCModelView _modelView = CCModelView();
-  HomeView({Key key}) : super(key: key);
+  final CCModelView _modelView;
+  HomeView({@required CCModelView ccmodel, Key key}) : this._modelView = ccmodel, super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,8 @@ class HomeView extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0.0,
-        leading: Icon(Icons.arrow_back_ios, color: Colors.grey,),
+        leading: IconButton(icon: Icon(Icons.arrow_back_ios, color: Colors.grey,),
+          onPressed: () => Navigator.of(context).pop(),),
       ),
       body: ViewModelBuilder<CCModelView>.nonReactive(
         viewModelBuilder: () => _modelView,
