@@ -12,10 +12,10 @@ A bin searcher
  - Add the card luhn validator
  - ~- Add fonts~
  - Edit the icon & name
- - Add Real Random Address Information
+ - ~Add Real Random Address Information~
  - ~Add Postal Code~
- - Update Postal Code numbers
- - Reinforce the input filter
+ - ~Update Postal Code numbers~
+ - ~Reinforce the input filter~
  - Add responsive cards skins
  - Add auto extrapolation for cc
  

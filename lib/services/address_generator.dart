@@ -25,8 +25,6 @@ class AddressGenerator extends AddressGeneratorClass {
     var _askjnd = soup.find_all('div.row.detail.no-margin.no-padding');
     var content = _askjnd[0].children[1].children;
 
-    int items = content.length;
-    int dif = 31 - items;
 
 
     // ! Critical
