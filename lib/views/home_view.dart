@@ -103,6 +103,8 @@ class HomeView extends StatelessWidget {
         divider,
         _tile('Valid', model.valid.toString().toUpperCase()),
         divider,
+        _tile('Postal Code', model.postalCode),
+        divider,
       ],
     );
   }

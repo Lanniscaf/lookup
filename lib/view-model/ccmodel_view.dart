@@ -13,7 +13,9 @@ class CCModelView extends ChangeNotifier {
   final String number;
   final String bin;
   final String country;
+  final String isoCountry;
   final bool   valid;
+  String postalCode;
 
 
   CCModelView({
@@ -26,7 +28,9 @@ class CCModelView extends ChangeNotifier {
     this.number,
     this.bin,
     this.country,
-    this.valid
+    this.valid,
+    this.isoCountry,
+    this.postalCode = '-'
   });
 
 }

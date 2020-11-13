@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lookup/get_it.dart';
+import 'package:lookup/services/address_generator.dart';
 import 'package:lookup/services/bin_provider.dart';
 import 'package:lookup/view-model/ccmodel_view.dart';
 import 'package:lookup/views/home_view.dart';
@@ -14,7 +15,7 @@ class SearchViewModel extends ChangeNotifier {
   final RegExp filterLetters = new RegExp('([a-zA-Z])+');
   
   SearchViewModel();
-
+  final AddressGenerator _addressProvider = new AddressGenerator();
 
   String validate(String value){
     if(value.isEmpty) return 'Please write a bin';
@@ -32,6 +33,8 @@ class SearchViewModel extends ChangeNotifier {
     isLoading = true;
     notifyListeners();
     final CCModelView response = await BinProvider.getBinData(binController.text);
+    final String postCode      = await _addressProvider.getPostalFromCountryISO(response.isoCountry);
+    response.postalCode = postCode ?? '-';
     isLoading = false;
     notifyListeners();
 
@@ -44,7 +47,6 @@ class SearchViewModel extends ChangeNotifier {
       );
       return;
     }
-
     navigator.currentState.push(
       MaterialPageRoute(
         builder: (BuildContext context) => HomeView(ccmodel: response,),

@@ -21,6 +21,7 @@ class BinProvider {
       final String website     = _replaceSpace(detailsInRow[5].children[1].text) ?? '';
       final String phone       = _replaceSpace(detailsInRow[6].children[1].text) ?? '';
       final String countryName = _replaceSpace(detailsInRow[7].children[1].text) ?? '';
+      final String isoCountry  = _replaceSpace(detailsInRow[9].children[1].text) ?? '';
       final bool   isValid     = true;
       
       final CCModelView card = CCModelView(
@@ -33,7 +34,8 @@ class BinProvider {
         number: phone,
         type: type,
         valid: isValid,
-        website: website
+        website: website,
+        isoCountry: isoCountry
       );
 
       return card;

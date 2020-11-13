@@ -38,6 +38,7 @@ class SearchBin extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 10.0),
             child: Form(
               child: TextFormField(
+                keyboardType: TextInputType.number,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: model.validate,
                 controller: model.binController,
