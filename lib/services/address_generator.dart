@@ -80,14 +80,6 @@ class AddressGenerator extends AddressGeneratorClass {
     return _fakeData;
   }
   
-  _getterData(int position, content){
-    try {
-      return (content[position].children[1].firstChild.firstChild.attributes['value']);
-    } catch(e){
-      return null;
-    }
-  }
-
 
 
 }
