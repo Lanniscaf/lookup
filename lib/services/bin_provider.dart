@@ -1,12 +1,9 @@
 import 'package:beautifulsoup/beautifulsoup.dart';
 import 'package:http/http.dart' as http;
-import 'package:lookup/services/address_generator.dart';
 import 'package:lookup/model/ccmodel_view.dart';
 
 class BinProvider {
 
-  // *** Helper to get the Postal code
-  final AddressGenerator _countryData = new AddressGenerator();
 
   static Future getBinData(String bin) async {
     try {
