@@ -7,6 +7,7 @@ A bin searcher
  - ~Add responsive views~
  - ~Fix KeyboardType~
  - ~- Add responsive text~
+ - Add Tabs
  - Redesign the main menu
  - Add the card luhn validator
  - ~- Add fonts~
