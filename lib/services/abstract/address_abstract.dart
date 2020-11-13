@@ -1,6 +1,5 @@
 abstract class AddressGeneratorClass {
 
-  Future<String> getPostalFromCountryISO(String countryIso);
-
+  Future getCountryDataISO2( String iso2 );
 
 }

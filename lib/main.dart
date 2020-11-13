@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lookup/get_it.dart';
-import 'package:lookup/views/search_bin.dart';
+import 'package:lookup/views/search_bin_view.dart';
 
 void main() { 
   getInit();

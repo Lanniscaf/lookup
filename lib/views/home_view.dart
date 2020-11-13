@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lookup/styles/fonts_styles.dart';
-import 'package:lookup/view-model/ccmodel_view.dart';
+import 'package:lookup/model/ccmodel_view.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:stacked/stacked.dart';
 

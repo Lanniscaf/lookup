@@ -14,6 +14,7 @@ class CCModelView extends ChangeNotifier {
   final String bin;
   final String country;
   final String isoCountry;
+  final CardType company;
   final bool   valid;
   String postalCode;
 
@@ -30,7 +31,25 @@ class CCModelView extends ChangeNotifier {
     this.country,
     this.valid,
     this.isoCountry,
-    this.postalCode = '-'
+    this.postalCode = '-',
+    this.company
   });
 
+}
+
+CardType _getCardType(String cc) {
+  if(cc[0] == '5') return CardType.Mastercard;
+  if(cc[0] == '4') return CardType.Visa;
+  if(cc[0] == '3') return CardType.Amex;
+
+  // * By default returns the uknown Type
+  return CardType.Unknown;
+}
+
+// ! CardType is a Card Category
+enum CardType {
+  Mastercard,
+  Visa,
+  Amex,
+  Unknown
 }

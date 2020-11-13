@@ -1,14 +1,20 @@
 import 'package:beautifulsoup/beautifulsoup.dart';
 import 'package:http/http.dart' as http;
-import 'package:lookup/view-model/ccmodel_view.dart';
+import 'package:lookup/services/address_generator.dart';
+import 'package:lookup/model/ccmodel_view.dart';
 
 class BinProvider {
+
+  // *** Helper to get the Postal code
+  final AddressGenerator _countryData = new AddressGenerator();
 
   static Future getBinData(String bin) async {
     try {
       final url = 'https://bincheck.io/bin/$bin';
       final res = await http.post(url, body: {});
-      // TODO: Add internet exception
+      if(res.statusCode == 404) {
+        throw Exception('Error 404');
+      }
       final decoded = res.body;
 
       var soup = Beautifulsoup(decoded);
@@ -24,6 +30,8 @@ class BinProvider {
       final String isoCountry  = _replaceSpace(detailsInRow[9].children[1].text) ?? '';
       final bool   isValid     = true;
       
+
+
       final CCModelView card = CCModelView(
         bank: issuerBank,
         bin: bin,

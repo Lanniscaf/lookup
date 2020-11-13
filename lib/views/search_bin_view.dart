@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lookup/styles/constants.dart';
-import 'package:lookup/view-model/search_viewmodel.dart';
+import 'package:lookup/model/search_viewmodel.dart';
 import 'package:stacked/stacked.dart';
 
 class SearchBin extends StatelessWidget {
@@ -38,7 +38,9 @@ class SearchBin extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 10.0),
             child: Form(
               child: TextFormField(
-                keyboardType: TextInputType.number,
+                maxLength: 6,
+                textInputAction: TextInputAction.go,
+                keyboardType: TextInputType.numberWithOptions(decimal: false, signed: false),
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: model.validate,
                 controller: model.binController,
