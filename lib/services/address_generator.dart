@@ -58,9 +58,11 @@ class AddressGenerator extends AddressGeneratorClass {
           state = (row.children[1].firstChild.firstChild.attributes['value']);
         } else if(row.children[0].firstChild.text.contains('Zip Code')){
           postalCode = (row.children[1].firstChild.firstChild.attributes['value']);
-        } else if(row.children[0].firstChild.text.contains('Country')){
+        } else if(row.children[0].firstChild.text == 'Country'){
           country = (row.children[1].firstChild.firstChild.attributes['value']);
         } else if(row.children[0].firstChild.text.contains('Dialing Code')){
+          dialingCode = (row.children[1].firstChild.firstChild.attributes['value']);
+        } else if(row.children[0].firstChild.text.contains('Country Code')){
           dialingCode = (row.children[1].firstChild.firstChild.attributes['value']);
         }
       } catch(e){
@@ -74,7 +76,7 @@ class AddressGenerator extends AddressGeneratorClass {
       city        : cityTown       ?? '-',
       state       : state          ?? '-',
       zipCode     : postalCode     ?? '-',
-      countryName : country        ?? '-',
+      countryName : country        ?? iso2,
       phoneCode   : dialingCode    ?? '-'
     );
     return _fakeData;

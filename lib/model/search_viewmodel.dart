@@ -36,7 +36,6 @@ class SearchViewModel extends ChangeNotifier {
       final CCModelView response = await BinProvider.getBinData(binController.text);
       final FakeData countryInfo = await _addressProvider.getCountryDataISO2(response.isoCountry);
       response.postalCode = countryInfo?.zipCode;
-      print(countryInfo);
       isLoading = false;
       notifyListeners();
 
@@ -58,12 +57,13 @@ class SearchViewModel extends ChangeNotifier {
 
   }
 
-  void _showError() {
+  void _showError() async {
+    String errorToShow = '[X] Invalid Bin ${binController.text}';
     isLoading = false;
     binController.clear();
     scaffoldKey.currentState.showSnackBar(
       SnackBar(
-        content: Text('[X] Invalid Bin ${binController.text} '),
+        content: Text(errorToShow),
       )
     );
     notifyListeners();

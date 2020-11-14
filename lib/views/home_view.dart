@@ -14,23 +14,42 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Details', style: TextStyle(color: Colors.grey),),
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
-        elevation: 0.0,
-        leading: IconButton(icon: Icon(Icons.arrow_back_ios, color: Colors.grey,),
-          onPressed: () => Navigator.of(context).pop(),),
-      ),
-      body: ViewModelBuilder<CCModelView>.nonReactive(
-        viewModelBuilder: () => _modelView,
-        builder: (context, model, widget) => 
-        ListView(
-          physics: BouncingScrollPhysics(),
-          children: <Widget> [
-            _cardItem(context, model),
-            _cardDetails(context, model)
-          ],
+      body: SafeArea(
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: CustomScrollView(
+            physics: BouncingScrollPhysics(),
+            slivers: [
+              SliverAppBar(
+                title: Text('Details', style: TextStyle(color: Colors.grey),),
+                floating: true,
+                centerTitle: true,
+                backgroundColor: Colors.transparent,
+                elevation: 0.0,
+                leading: IconButton(icon: Icon(Icons.arrow_back_ios, color: Colors.grey,),
+                  onPressed: () => Navigator.of(context).pop(),
+                )
+              ),
+              SliverList(
+                delegate: SliverChildListDelegate(
+                  [
+                    ViewModelBuilder<CCModelView>.nonReactive(
+                      viewModelBuilder: () => _modelView,
+                      builder: (context, model, widget) => 
+                        Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            _cardItem(context, model),
+                            _cardDetails(context, model)
+                          ],
+                        )
+                    ),
+                  ]
+                ),
+              )
+            ], 
+          ),
         ),
       ),
     );
