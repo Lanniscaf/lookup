@@ -76,7 +76,7 @@ class HomeView extends StatelessWidget {
         divider,
         _tile('Issuing Bank', model.bank),
         divider,
-        _tile('Ussuers Website', model.website),
+        _tile('Issuers Website', model.website),
         divider,
         _tile('Issuers Contact', model.number),
         divider,
