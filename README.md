@@ -17,6 +17,7 @@ A bin searcher
  - Add the cc generate from bin / bins
  - ~Update Postal Code numbers~
  - ~Reinforce the input filter~
+ - Add playstore in-app purchase to manually check
  - ~Add responsive cards skins~
  - Add auto extrapolation for cc
  
