@@ -5,6 +5,7 @@ A bin searcher
 
 ## TODO:
  - ~Add responsive views~
+ - Add compatibility to tablets and/or desktops (?
  - ~Fix KeyboardType~
  - ~- Add responsive text~
  - Add Tabs
