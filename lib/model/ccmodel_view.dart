@@ -1,6 +1,6 @@
+import 'package:flutter/material.dart';
 
 
-import 'package:flutter/cupertino.dart';
 
 class CCModelView extends ChangeNotifier {
 
@@ -35,15 +35,31 @@ class CCModelView extends ChangeNotifier {
     this.company
   });
 
-}
+  String get numberFix {
+    String fixNum;
+    var s   = '  ';
+    if(getType == CardType.Amex) {
+      fixNum  = this.bin.substring(0,4) + s;
+      fixNum += this.bin.substring(4,)+ 'xxxx' + s;
+      fixNum += 'xxxxx' + s;
+    } else {
+      fixNum  = this.bin.substring(0,4) + s;
+      fixNum += this.bin.substring(4,)+ 'xx' + s;
+      fixNum += 'xxxx' + s;
+      fixNum += 'xxxx' + s;
+    }
+    return fixNum;
+  }
 
-CardType _getCardType(String cc) {
-  if(cc[0] == '5') return CardType.Mastercard;
-  if(cc[0] == '4') return CardType.Visa;
-  if(cc[0] == '3') return CardType.Amex;
+  CardType get getType {
+    if(ccnumber[0] == '5') return CardType.Mastercard;
+    if(ccnumber[0] == '4') return CardType.Visa;
+    if(ccnumber[0] == '3') return CardType.Amex;
 
-  // * By default returns the uknown Type
-  return CardType.Unknown;
+    // * By default returns the uknown Type
+    return CardType.Unknown;
+  }
+
 }
 
 // ! CardType is a Card Category

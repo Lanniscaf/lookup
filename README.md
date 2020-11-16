@@ -16,7 +16,7 @@ A bin searcher
  - ~Add Postal Code~
  - ~Update Postal Code numbers~
  - ~Reinforce the input filter~
- - Add responsive cards skins
+ - ~Add responsive cards skins~
  - Add auto extrapolation for cc
  
  ### Current version: 0.3.2+alpha

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lookup/styles/fonts_styles.dart';
 import 'package:lookup/model/ccmodel_view.dart';
-import 'package:responsive_builder/responsive_builder.dart';
+import 'package:lookup/widgets/credit_card.dart';
 import 'package:stacked/stacked.dart';
 
 
@@ -40,7 +40,7 @@ class HomeView extends StatelessWidget {
                         Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            _cardItem(context, model),
+                            CreditCard(cardModel: model,),
                             _cardDetails(context, model)
                           ],
                         )
@@ -55,50 +55,7 @@ class HomeView extends StatelessWidget {
     );
   }
 
-  Widget _cardItem(BuildContext context, CCModelView model) {
-    final Size _sizing = MediaQuery.of(context).size;
-    final Widget _card = ResponsiveBuilder(
-      builder: (context, sizing) {
-        return Stack(
-          children: [
-            Container(
-              width : sizing.localWidgetSize.width * 0.8,
-              height: sizing.localWidgetSize.height * 0.9,
-              child: Image(
-                image: AssetImage('assets/images/ccard.png'),
-                fit: BoxFit.cover,
-              ),
-            ),
-            Positioned(
-              left: sizing.localWidgetSize.width * 0.06,
-              top: sizing.localWidgetSize.height * 0.17,
-              child: Text(model.type, style: CREDITCARDTEXT,)
-            ),
-            
-            Positioned(
-              left: sizing.localWidgetSize.width * 0.06,
-              bottom: sizing.localWidgetSize.height * 0.1,
-              child: Container(width: sizing.localWidgetSize.width * 0.7, child: FittedBox(fit: BoxFit.scaleDown, alignment: Alignment.centerLeft, child: Text(model.bank, style: CREDITCARDTEXT.copyWith(fontSize: 17.0),)))
-            ),
-
-            Positioned(
-              left: sizing.localWidgetSize.width * 0.08,
-              bottom: sizing.localWidgetSize.height * 0.22,
-              child: Text(model.ccnumber, style: CREDITCARDTEXT.copyWith(letterSpacing: 2.0),)
-            ),
-              
-          ],
-        );
-      }
-    );
-    return Container(
-      width: _sizing.width,
-      height: _sizing.height * 0.33,
-      alignment: Alignment.topCenter,
-      child: _card,
-    );
-  }
-
+  
   Widget _cardDetails(BuildContext context, CCModelView model) {
     final Widget divider = Divider(thickness: 1.5,);
     return Column(
@@ -137,5 +94,6 @@ class HomeView extends StatelessWidget {
       children: [ SizedBox(width: 15.0,), SelectableText(title, style: LISTCREDITTEXT.copyWith(color: Colors.grey)), Expanded(child: Container(),),Container(width: 160, alignment: Alignment.centerRight, child: SelectableText(value, style: LISTCREDITTEXT, textAlign: TextAlign.right,)), SizedBox(width: 15.0,)],
     ),
   );
+
 
 }
