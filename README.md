@@ -14,6 +14,7 @@ A bin searcher
  - Edit the icon & name
  - ~Add Real Random Address Information~
  - ~Add Postal Code~
+ - Add the cc generate from bin / bins
  - ~Update Postal Code numbers~
  - ~Reinforce the input filter~
  - ~Add responsive cards skins~
