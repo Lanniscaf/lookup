@@ -2,7 +2,9 @@
 
 A bin searcher
 
-
+#### Instalaciones:
+ - En la [pestaña de releases](https://github.com/Lanniscaf/lookup/releases). Unicamente compatible dispositivos moviles android por el momento.
+ ![](https://imgur.com/RatXeqF.jpg)
 ## TODO:
  
  - Add compatibility to tablets and/or desktops (?
