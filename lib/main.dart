@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'Lookup',
       debugShowCheckedModeBanner: false,
       home: SearchBin(),
-      theme: ThemeData(fontFamily: 'Roboto'),
+      theme: ThemeData(fontFamily: 'Roboto',),
       navigatorKey: getIt<NAVIGATOR>().navigateKey,
     );
   }

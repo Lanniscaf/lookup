@@ -14,41 +14,46 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          child: CustomScrollView(
-            physics: BouncingScrollPhysics(),
-            slivers: [
-              SliverAppBar(
-                title: Text('Details', style: TextStyle(color: Colors.grey),),
-                floating: true,
-                centerTitle: true,
-                backgroundColor: Colors.transparent,
-                elevation: 0.0,
-                leading: IconButton(icon: Icon(Icons.arrow_back_ios, color: Colors.grey,),
-                  onPressed: () => Navigator.of(context).pop(),
-                )
-              ),
-              SliverList(
-                delegate: SliverChildListDelegate(
-                  [
-                    ViewModelBuilder<CCModelView>.nonReactive(
-                      viewModelBuilder: () => _modelView,
-                      builder: (context, model, widget) => 
-                        Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            CreditCard(cardModel: model,),
-                            _cardDetails(context, model)
-                          ],
-                        )
-                    ),
-                  ]
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: BoxDecoration(image: DecorationImage(fit: BoxFit.cover, image: AssetImage('assets/images/bg.jpg'))),
+        child: SafeArea(
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: CustomScrollView(
+              physics: BouncingScrollPhysics(),
+              slivers: [
+                SliverAppBar(
+                  title: Text('Details', style: TextStyle(color: Colors.grey),),
+                  floating: true,
+                  centerTitle: true,
+                  backgroundColor: Colors.transparent,
+                  elevation: 0.0,
+                  leading: IconButton(icon: Icon(Icons.arrow_back_ios, color: Colors.grey,),
+                    onPressed: () => Navigator.of(context).pop(),
+                  )
                 ),
-              )
-            ], 
+                SliverList(
+                  delegate: SliverChildListDelegate(
+                    [
+                      ViewModelBuilder<CCModelView>.nonReactive(
+                        viewModelBuilder: () => _modelView,
+                        builder: (context, model, widget) => 
+                          Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              CreditCard(cardModel: model,),
+                              _cardDetails(context, model)
+                            ],
+                          )
+                      ),
+                    ]
+                  ),
+                )
+              ], 
+            ),
           ),
         ),
       ),
@@ -57,7 +62,7 @@ class HomeView extends StatelessWidget {
 
   
   Widget _cardDetails(BuildContext context, CCModelView model) {
-    final Widget divider = Divider(thickness: 1.5,);
+    final Widget divider = Divider(thickness: 1.5, color: Colors.white30);
     return Column(
       children: [
         divider,

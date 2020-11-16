@@ -8,10 +8,11 @@ class CreditCard extends StatelessWidget {
   final CCModelView model;
   
   
-  CreditCard({Key key, @required CCModelView cardModel}) : model= cardModel, super(key: key);
+  CreditCard({Key key, CCModelView cardModel}) : model= cardModel, super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    
     final Size _sizing = MediaQuery.of(context).size;
     final Widget _card = ResponsiveBuilder(
       builder: (context, sizing) {
@@ -29,25 +30,25 @@ class CreditCard extends StatelessWidget {
             Positioned(
               left: sizing.localWidgetSize.width * 0.06,
               top: sizing.localWidgetSize.height * 0.17,
-              child: Text(model.type, style: CREDITCARDTEXT,)
+              child: (model !=null)? Text(model.type, style: CREDITCARDTEXT,): Container()
             ),
             
             Positioned(
               left: sizing.localWidgetSize.width * 0.06,
               bottom: sizing.localWidgetSize.height * 0.1,
-              child: Container(width: sizing.localWidgetSize.width * 0.7, child: FittedBox(fit: BoxFit.scaleDown, alignment: Alignment.centerLeft, child: Text(model.bank, style: CREDITCARDTEXT.copyWith(fontSize: 17.0),)))
+              child: (model !=null)? Container(width: sizing.localWidgetSize.width * 0.7, child: FittedBox(fit: BoxFit.scaleDown, alignment: Alignment.centerLeft, child: Text(model.bank, style: CREDITCARDTEXT.copyWith(fontSize: 17.0),))): Container()
             ),
 
             Positioned(
               left: sizing.localWidgetSize.width * 0.08,
               bottom: sizing.localWidgetSize.height * 0.22,
-              child: Text(model.numberFix, style: CREDITCARDTEXT.copyWith(letterSpacing: 2.0),)
+              child: (model !=null)? Text(model.numberFix, style: CREDITCARDTEXT.copyWith(letterSpacing: 2.0),) : Container()
             ),
 
             Positioned(
               right: 10,
               top: sizing.localWidgetSize.height * 0.13,
-              child: Container(
+              child: (model !=null)? Container(
                 constraints: BoxConstraints(minWidth: 50, minHeight: 50, maxWidth: 100, maxHeight: 100),
                 width : sizing.localWidgetSize.width * 0.2,
                 height: sizing.localWidgetSize.height * 0.2,
@@ -58,7 +59,7 @@ class CreditCard extends StatelessWidget {
                   alignment: Alignment.center,
                   filterQuality: FilterQuality.medium,
                 ),
-              ),
+              ) : Container(),
             )
           ],
         );
