@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+// ! TODO: CLEAN AND REFACTOR THIS CODE ! IS VERY UNCLEAN AND UNOPTIMIZED
+
 class SideMenu extends StatefulWidget {
   
   SideMenu({Key key}) : super(key: key);
