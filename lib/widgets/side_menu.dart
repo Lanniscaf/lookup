@@ -101,17 +101,20 @@ class _SideMenuState extends State<SideMenu> with SingleTickerProviderStateMixin
                 alignment: Alignment(1,-0.76),
                 child: Stack(
                   children: [
-                    Container(
-                      height: double.infinity,
-                      width: 40,
-                      color: Colors.transparent,
+                    ClipPath(
+                      clipper: DrawerCustomClipper(),
+                      child: Container(
+                        height: double.infinity,
+                        width: 40,
+                        color: Colors.transparent,
+                      ),
                     ),
                     Positioned(
                       top: MediaQuery.of(context).size.height * 0.1,
                       child: GestureDetector(
                         onTap: onIconPressed,
                         child: ClipPath(
-                          clipper: DrawerCustomClipper(),
+                          clipper: CustomClipperInvisibleDrawer(),
                           child: Container(
                             alignment: Alignment.centerLeft,
                             height: 100,
@@ -206,12 +209,15 @@ class _SideMenuItems extends StatelessWidget{
 
   _item(String title, IconData icon, {Function onTap, context}){
     if(context != null){
-      return AboutListTile(
-        child: Text('About'),
-        applicationVersion: '0.3.4+alpha',
-        applicationLegalese: '©All Rights Reserverd 2020',
-        applicationName: 'Lookup',
-        icon: Padding(padding: const EdgeInsets.only(left: 5), child: Icon(Icons.info, size: 23)),
+      return Theme(
+        data: ThemeData.dark(),
+        child: AboutListTile(
+          child: Text('About & Licenses', style: TextStyle(color: Colors.black),),
+          applicationVersion: '0.3.4+alpha',
+          applicationLegalese: '©All Rights Reserverd 2020',
+          applicationName: 'Lookup',
+          icon: Padding(padding: const EdgeInsets.only(left: 5), child: Icon(Icons.info, size: 23, color: Colors.grey)),
+        ),
       );
     } 
     return Material(
@@ -231,8 +237,25 @@ class _SideMenuItems extends StatelessWidget{
 class DrawerCustomClipper extends CustomClipper<Path>{
   @override
   Path getClip(Size size) {
+    Path path = Path();
+    path.moveTo(0, 0);
+    path.lineTo(size.width / 2, 0);
+    path.lineTo(size.width / 2, size.height);
+    path.lineTo(0, size.height);
+    path.lineTo(0, 0);
+    path.close();
+    return path;    
+  }
+  
+    @override
+    bool shouldReclip(covariant CustomClipper<Path> oldClipper) => true;
+}
+
+class CustomClipperInvisibleDrawer extends CustomClipper<Path>{
+  @override
+  Path getClip(Size size) {
     Paint paint = Paint();
-    paint.color = Colors.white;
+    paint.color = Colors.orange;
 
     final width = size.width;
     final height = size.height;
@@ -249,4 +272,5 @@ class DrawerCustomClipper extends CustomClipper<Path>{
   
     @override
     bool shouldReclip(covariant CustomClipper<Path> oldClipper) => true;
+
 }

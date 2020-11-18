@@ -106,7 +106,7 @@ class SearchBin extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 30.0),
       child: RaisedButton(
-        color: Colors.lightBlueAccent,
+        color: Colors.amber,
         child: (!model.isLoading) ? Text('Buscar') : Container(width: 20, height: 20, alignment: Alignment.center, child: CircularProgressIndicator()),
         onPressed: model.getBinInfo,
       ),
