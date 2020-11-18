@@ -91,7 +91,15 @@ class _SideMenuState extends State<SideMenu> with SingleTickerProviderStateMixin
               Expanded(
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Color(0xff141c2c),
+                        Color(0xff181c2c),
+                      ],
+                      
+                    ),
                     border: Border(),
                   ),
                   child: _SideMenuItems(),
@@ -120,7 +128,7 @@ class _SideMenuState extends State<SideMenu> with SingleTickerProviderStateMixin
                             height: 100,
                             width: 40,
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: Color(0xff181c2c),
                               border: Border(),
                             ),
                             child: AnimatedIcon(
@@ -182,8 +190,8 @@ class _SideMenuItems extends StatelessWidget{
       physics: BouncingScrollPhysics(),
       slivers: [
         SliverAppBar(
-          backgroundColor: Colors.black.withOpacity(0.87),
-          title: Text('Lookup Tools v1'),
+          backgroundColor: Colors.transparent,
+          title: Text('Lookups v1', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontFamily: 'Roboto'),),
         ),
         SliverList(
           delegate: SliverChildListDelegate(
@@ -212,7 +220,7 @@ class _SideMenuItems extends StatelessWidget{
       return Theme(
         data: ThemeData.dark(),
         child: AboutListTile(
-          child: Text('About & Licenses', style: TextStyle(color: Colors.black),),
+          child: Text('About & Licenses', style: TextStyle(color: Colors.grey),),
           applicationVersion: '0.3.4+alpha',
           applicationLegalese: '©All Rights Reserverd 2020',
           applicationName: 'Lookup',
@@ -225,8 +233,8 @@ class _SideMenuItems extends StatelessWidget{
       child: ListTile(
         contentPadding: EdgeInsets.symmetric(horizontal: 20.0),
         isThreeLine: false,
-        title: Text(title), 
-        leading: FaIcon(icon, size: 22,),
+        title: Text(title, style: TextStyle(color: Colors.grey),), 
+        leading: FaIcon(icon, size: 22, color: Colors.grey,),
         onTap: (){ 
         },
       ),
