@@ -39,17 +39,22 @@ class _SideMenuState extends State<SideMenu> with SingleTickerProviderStateMixin
         this.openDrawer();
       });
     }
-    if(i.delta.dx < -1){
+    if(i.delta.dx < -1 && panSP > 100 + i.globalPosition.dx){
       setState(() {
         this.openDrawer(reverse: true);
       });
       return;
     }
+    setState(() {
+        this.yPosition += - i.delta.dx;
+      });
     if(i.globalPosition.dx <= 133){
       setState(() {
         this.yPosition += - i.delta.dx;
       });
+      return;
     }
+    
   }
 
   
@@ -75,8 +80,27 @@ class _SideMenuState extends State<SideMenu> with SingleTickerProviderStateMixin
         right: (s.data) ? 0 : yPosition,
         duration: _animationDuration,
         child: GestureDetector(
+          onTap: (s.data)? () => openDrawer(reverse: true): null,
           onPanUpdate: panUPD,
+          onPanStart: (i){
+            setState(() {
+              this.panSP=i.globalPosition.dx;
+            });
+          },
           onPanEnd: (i){
+            Velocity speed = i.velocity;
+            if(speed.pixelsPerSecond.dx < - 670 && _animation.status == AnimationStatus.completed){
+              setState(() {
+                this.yPosition = this.width - 42;
+              });
+              openDrawer(reverse: true);
+            }
+            if(speed.pixelsPerSecond.dx > 670 && _animation.status == AnimationStatus.dismissed){
+              setState(() {
+                this.yPosition = this.width - 42;
+              });
+              openDrawer();
+            }
             if(this._animation.status != AnimationStatus.completed){
               setState(() {
                 this.yPosition = this.width - 42;
@@ -110,7 +134,7 @@ class _SideMenuState extends State<SideMenu> with SingleTickerProviderStateMixin
                 child: Stack(
                   children: [
                     ClipPath(
-                      clipper: DrawerCustomClipper(),
+                      clipper: s.data? null : DrawerCustomClipper(),
                       child: Container(
                         height: double.infinity,
                         width: 40,
