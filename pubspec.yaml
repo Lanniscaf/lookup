@@ -33,6 +33,7 @@ dependencies:
   beautifulsoup: ^0.0.1
   http: any
   get_it: any
+  font_awesome_flutter: any
 
 
 dev_dependencies:

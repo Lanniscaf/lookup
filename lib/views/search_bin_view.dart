@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lookup/styles/constants.dart';
 import 'package:lookup/model/search_viewmodel.dart';
 import 'package:lookup/widgets/credit_card.dart';
+import 'package:lookup/widgets/side_menu.dart';
 import 'package:stacked/stacked.dart';
 
 class SearchBin extends StatelessWidget {
@@ -23,47 +24,53 @@ class SearchBin extends StatelessWidget {
   }
 
   Widget buildScrollableSearch(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      decoration: BoxDecoration(image: DecorationImage(fit: BoxFit.cover, image: AssetImage('assets/images/bg.jpg'))),
-      child: ViewModelBuilder<SearchViewModel>.reactive(
-        viewModelBuilder: ()=> SearchViewModel(),
-        builder:(context, model, _) => CustomScrollView(
-          slivers: [
-            SliverAppBar(  
-              backgroundColor: Colors.transparent,
-              title: Text('Lookup', style: TextStyle(color: Colors.white54),),
-              elevation: 0.0,
-              centerTitle: true,
-              floating: true,
-            ),
-            SliverList(
-              delegate: SliverChildListDelegate(
-                [
-                  Stack(
-                    children: [
-                      Positioned(
-                        top: 10,
-                        left: 4,
-                        child: Transform.rotate(angle: -0.1, child: CreditCard())
-                      
+    return Stack(
+      children: [
+        Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: BoxDecoration(image: DecorationImage(fit: BoxFit.cover, image: AssetImage('assets/images/bg.jpg'))),
+          child: ViewModelBuilder<SearchViewModel>.reactive(
+            viewModelBuilder: ()=> SearchViewModel(),
+            builder:(context, model, _) => CustomScrollView(
+              slivers: [
+                SliverAppBar(  
+                  automaticallyImplyLeading: false,
+                  backgroundColor: Colors.transparent,
+                  title: Text('Lookup', style: TextStyle(color: Colors.white54),),
+                  elevation: 0.0,
+                  centerTitle: true,
+                  floating: true,
+                ),
+                SliverList(
+                  delegate: SliverChildListDelegate(
+                    [
+                      Stack(
+                        children: [
+                          Positioned(
+                            top: 10,
+                            left: 4,
+                            child: Transform.rotate(angle: -0.1, child: CreditCard())
+                          
+                          ),
+                          CreditCard(),
+                          Positioned(
+                            top: MediaQuery.of(context).size.height * 0.19,
+                            left: 14,
+                            child: _form(model, context),
+                          ),
+                        ],
                       ),
-                      CreditCard(),
-                      Positioned(
-                        top: MediaQuery.of(context).size.height * 0.19,
-                        left: 14,
-                        child: _form(model, context),
-                      ),
+                        _button(model),
                     ],
                   ),
-                    _button(model),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
-      ),
+        SideMenu(),
+      ],
     );
   }
 
@@ -74,7 +81,7 @@ class SearchBin extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 10.0),
+            padding: EdgeInsets.only(left: 40.0, top: 10.0, bottom: 10, right: 70.0),
             child: Form(
               child: TextFormField(
                 maxLength: 6,
